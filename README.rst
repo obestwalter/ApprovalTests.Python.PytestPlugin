@@ -72,6 +72,23 @@ They will be inserted like this:
 
     diff_program arg1 arg2 filepath1 filepath2
 
+Tip for Jetbrains toolbox and PyCharm users
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+You can use PyCharm as a diff tool, which is convenient if you are also using it as an IDE.
+Especially if you're using Toolbox, it can be difficult to find the actual executable to pass to pytest.
+You could try this while PyCharm is running:
+
+    ps -ef | grep PyCharm
+
+If you're lucky it will show the full path to the PyCharm that is executing. It may not be pretty.
+However, then you can configure pytest with arguments something like this:
+
+    --approvaltests-add-reporter-args='diff' --approvaltests-add-reporter='/Users/emily/Library/Application Support/JetBrains/Toolbox/apps/PyCharm-P/ch-0/192.6262.63/PyCharm.app/Contents/MacOS/pycharm'
+
+In PyCharm, you can create a new 'run configuration' (see the [documentation](https://www.jetbrains.com/help/pycharm/creating-and-editing-run-debug-configurations.html)).
+Add a configuration using the '+' button, choose "python tests | pytest".
+Add these arguments to set the reporter for pytest under 'Additional Arguments'.
 
 
 Contributing
