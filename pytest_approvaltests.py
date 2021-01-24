@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 import approvaltests
-from approvaltests.reporters import GenericDiffReporterFactory
+from approvaltests.reporters import GenericDiffReporterFactory, PythonNativeReporter
 
 
 def pytest_addoption(parser):
@@ -31,6 +31,8 @@ def pytest_configure(config):
         reporter = create_reporter(factory, custom_reporter, args)
     else:
         reporter = factory.get(config.option.approvaltests_reporter)
+        if reporter is None and config.option.approvaltests_reporter == "PythonNative":
+            reporter = PythonNativeReporter()
 
     approvaltests.set_default_reporter(reporter)
 
