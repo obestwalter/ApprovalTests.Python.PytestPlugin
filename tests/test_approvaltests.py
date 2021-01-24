@@ -51,7 +51,7 @@ def test_approvaltests_add_reporter(testdir, tmpdir):
     # assert that the diff program did execute on the test failure
     result.stdout.fnmatch_lines([
         '*::test_sth FAILED*',
-        '*diff program is executing*'
+        '*GenericDiffReporter*'
     ])
 
 
