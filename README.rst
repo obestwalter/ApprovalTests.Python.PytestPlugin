@@ -10,13 +10,9 @@ pytest-approvaltests
     :target: https://pypi.org/project/pytest-approvaltests
     :alt: Python versions
 
-.. image:: https://travis-ci.org/emilybache/pytest-approvaltests.svg?branch=master
-    :target: https://travis-ci.org/emilybache/pytest-approvaltests
-    :alt: See Build Status on Travis CI
-
-.. image:: https://ci.appveyor.com/api/projects/status/github/emilybache/pytest-approvaltests?branch=master
-    :target: https://ci.appveyor.com/project/emilybache/pytest-approvaltests/branch/master
-    :alt: See Build Status on AppVeyor
+.. image:: https://github.com/approvals/ApprovalTests.Python.PytestPlugin/workflows/Test/badge.svg
+    :target: https://github.com/approvals/ApprovalTests.Python.PytestPlugin/workflow
+    :alt: See Build Status on GitHub Actions
 
 A plugin to use approvaltests with pytest
 
