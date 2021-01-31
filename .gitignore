@@ -74,3 +74,4 @@ target/
 venv
 
 .idea
+*.received.*

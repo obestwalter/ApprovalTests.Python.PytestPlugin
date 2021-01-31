@@ -1,6 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 
+from approvaltests.reporters import PythonNativeReporter
+
+from pytest_approvaltests import get_reporter, clean
+
 
 def test_approvaltests_use_reporter(testdir):
 
@@ -23,6 +27,7 @@ def test_approvaltests_use_reporter(testdir):
         '*::test_sth FAILED*',
         '*to approve this result:*'
     ])
+
 
 
 def test_approvaltests_add_reporter(testdir, tmpdir):
@@ -75,3 +80,9 @@ def test_difftool_path_with_spaces(testdir):
     factory = GenericDiffReporterFactory()
     reporter = create_reporter(factory, "/path with spaces/to/difftool", [])
     assert reporter.path == "/path with spaces/to/difftool"
+
+
+def test_python_native_reporter():
+    assert type(get_reporter(None, None, clean("PythonNative"))) == PythonNativeReporter
+    assert type(get_reporter(None, None, clean("'PythonNative'"))) == PythonNativeReporter
+    assert type(get_reporter(None, None, clean('"PythonNative"'))) == PythonNativeReporter

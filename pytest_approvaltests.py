@@ -22,19 +22,32 @@ def pytest_addoption(parser):
                          'It specifies additional arguments to pass to the executable program that can diff files')
 
 
+def clean(text):
+    return None if text is None else text.replace('"', "").replace("'","")
+
+
 def pytest_configure(config):
-    factory = GenericDiffReporterFactory()
 
     custom_reporter = config.option.approvaltests_custom_reporter
-    if custom_reporter:
-        args = get_reporter_args(config.option.approvaltests_custom_reporter_args)
-        reporter = create_reporter(factory, custom_reporter, args)
-    else:
-        reporter = factory.get(config.option.approvaltests_reporter)
-        if reporter is None and config.option.approvaltests_reporter == "PythonNative":
-            reporter = PythonNativeReporter()
+    reporter_name = config.option.approvaltests_reporter
+    custom_reporter_args = clean(config.option.approvaltests_custom_reporter_args)
+
+    reporter = get_reporter(custom_reporter, custom_reporter_args, reporter_name)
 
     approvaltests.set_default_reporter(reporter)
+
+
+
+def get_reporter(custom_reporter, custom_reporter_args, reporter_name):
+    factory = GenericDiffReporterFactory()
+    if custom_reporter:
+        args = get_reporter_args(custom_reporter_args)
+        reporter = create_reporter(factory, custom_reporter, args)
+    else:
+        reporter = factory.get(reporter_name)
+        if reporter is None and reporter_name == "PythonNative":
+            reporter = PythonNativeReporter()
+    return reporter
 
 
 def get_reporter_args(args_str):
