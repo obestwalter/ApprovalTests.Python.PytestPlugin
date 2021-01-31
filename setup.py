@@ -13,7 +13,7 @@ def read(fname):
 
 setup(
     name='pytest-approvaltests',
-    version='0.1.1',
+    version='0.2.0',
     author='Emily Bache',
     author_email='emily@bacheconsulting.com',
     maintainer='Emily Bache',
