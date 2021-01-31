@@ -23,7 +23,7 @@ def pytest_addoption(parser):
 
 
 def clean(text):
-    return None if text is None else text.replace('"', "").replace("'","")
+    return None if text is None else text.strip("'\"")
 
 
 def pytest_configure(config):
