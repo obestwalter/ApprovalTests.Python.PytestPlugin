@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
 import os
 
+import approvaltests
 from approvaltests.reporters import PythonNativeReporter
 
-from pytest_approvaltests import get_reporter, clean
+from pytest_approvaltests import get_reporter, clean, pytest_configure
 
 
 def test_approvaltests_use_reporter(testdir):
@@ -86,3 +87,18 @@ def test_python_native_reporter():
     assert type(get_reporter(None, None, clean("PythonNative"))) == PythonNativeReporter
     assert type(get_reporter(None, None, clean("'PythonNative'"))) == PythonNativeReporter
     assert type(get_reporter(None, None, clean('"PythonNative"'))) == PythonNativeReporter
+
+
+def test_command_line():
+    def create_config(custom_reporter, custom_reporter_arg, reporter_name):
+        class config:
+            class option:
+                approvaltests_custom_reporter = custom_reporter
+                approvaltests_custom_reporter_args = custom_reporter_arg
+                approvaltests_reporter = reporter_name
+
+        return config
+
+    config=create_config(None, None, "'PythonNative'")
+    pytest_configure(config)
+    assert type(approvaltests.get_default_reporter()) == PythonNativeReporter
