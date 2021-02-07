@@ -17,7 +17,7 @@ def test_approvaltests_use_reporter(testdir):
 
     # run pytest with approvaltests configuration to use the PythonNative diff tool
     result = testdir.runpytest(
-        '--approvaltests-use-reporter=PythonNative',
+        "--approvaltests-use-reporter='PythonNative'",
         '-v'
     )
 
