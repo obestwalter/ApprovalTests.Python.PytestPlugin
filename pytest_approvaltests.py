@@ -28,12 +28,11 @@ def clean(text):
 
 def pytest_configure(config):
 
-    custom_reporter = config.option.approvaltests_custom_reporter
-    reporter_name = config.option.approvaltests_reporter
+    custom_reporter = clean(config.option.approvaltests_custom_reporter)
     custom_reporter_args = clean(config.option.approvaltests_custom_reporter_args)
+    reporter_name = clean(config.option.approvaltests_reporter)
 
     reporter = get_reporter(custom_reporter, custom_reporter_args, reporter_name)
-
     approvaltests.set_default_reporter(reporter)
 
 
