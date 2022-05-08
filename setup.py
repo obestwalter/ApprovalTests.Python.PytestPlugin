@@ -3,6 +3,9 @@
 
 import os
 import codecs
+import re
+from pathlib import Path
+
 from setuptools import setup
 
 
@@ -10,10 +13,14 @@ def read(fname):
     file_path = os.path.join(os.path.dirname(__file__), fname)
     return codecs.open(file_path, encoding='utf-8').read()
 
+HERE = Path(__file__).parent
+_version_file_contents = (HERE / "version.py").read_text()
+matched = re.search(r'"(.*)"', _version_file_contents)
+VERSION = matched.group(1) if matched is not None else "UNKNOWN VERSION"
 
 setup(
     name='pytest-approvaltests',
-    version='0.2.3',
+    version=VERSION,
     author='Emily Bache',
     author_email='emily@bacheconsulting.com',
     maintainer='Emily Bache',
