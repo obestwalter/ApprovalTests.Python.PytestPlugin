@@ -48,9 +48,10 @@ def test_approvaltests_add_reporter(testdir, tmpdir):
         f.write(diff_program_contents)
 
     # run pytest with configuration for custom diff tool
+    diff_tool_path = str(diff_tool)
     result = testdir.runpytest(
         '--approvaltests-add-reporter=python',
-        '--approvaltests-add-reporter-args=' + str(diff_tool),
+        '--approvaltests-add-reporter-args=' + diff_tool_path,
         '-v'
     )
 
