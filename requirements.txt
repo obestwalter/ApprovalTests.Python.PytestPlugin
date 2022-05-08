@@ -1,2 +1,2 @@
 approvaltests==5.0.2
-pytest==7.0.1
+pytest==7.1.2
