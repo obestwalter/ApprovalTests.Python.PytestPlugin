@@ -75,3 +75,4 @@ venv
 
 .idea
 *.received.*
+.DS_Store

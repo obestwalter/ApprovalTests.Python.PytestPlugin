@@ -36,7 +36,9 @@ def test_approvaltests_add_reporter(testdir, tmpdir):
     # create a temporary pytest test module with a failing approval test
     testdir.makepyfile("""
         from approvaltests import verify
+        from approvaltests.reporters.default_reporter_factory import get_default_reporter
         def test_sth():
+            print(f"reporter: {get_default_reporter().__class__}")
             verify("foo")
     """)
     # create a diff tool that just prints 'diff program is executing'
