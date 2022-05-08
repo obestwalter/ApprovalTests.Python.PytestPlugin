@@ -24,7 +24,7 @@ setup(
     long_description=read('README.rst'),
     py_modules=['pytest_approvaltests'],
     python_requires='>=3.6.1',
-    install_requires=['pytest>=3.5.0', 'approvaltests'],
+    install_requires=['pytest>=7.0.1', 'approvaltests'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Framework :: Pytest',
