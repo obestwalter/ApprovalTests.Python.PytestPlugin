@@ -18,9 +18,9 @@ it to open another diff tool than when you are on a CI server for example.
 
 This plugin allows you to configure pytest with which diff tool to use when tests fail.
 
-To set the default reporter to 'PythonNative', suitable for use on the command line:
+To set the default reporter to 'PythonNativeReporter', suitable for use on the command line:
 
-    pytest --approvaltests-use-reporter='PythonNative'
+    pytest --approvaltests-use-reporter='PythonNativeReporter'
 
 To define your own diff reporter, perhaps a program with a rich GUI installed only on your developer workstation:
 

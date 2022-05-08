@@ -10,7 +10,7 @@ def pytest_addoption(parser):
     group.addoption('--approvaltests-use-reporter', action='store', metavar='REPORTER',
                     nargs='?', const=True, dest='approvaltests_reporter',
                     help='Named difference reporter to use when approval tests fail '
-                         'For example ClipboardReporter or PythonNative.')
+                         'For example ClipboardReporter or PythonNativeReporter.')
     group.addoption('--approvaltests-add-reporter', action='store', metavar='CUSTOM_REPORTER',
                     nargs='?', const=True, dest='approvaltests_custom_reporter',
                     help='Add a custom reporter to use when approval tests fail.'
@@ -44,7 +44,7 @@ def get_reporter(custom_reporter, custom_reporter_args, reporter_name):
         reporter = create_reporter(factory, custom_reporter, args)
     else:
         reporter = factory.get(reporter_name)
-        if reporter is None and reporter_name == "PythonNative":
+        if reporter is None and reporter_name == "PythonNativeReporter":
             reporter = PythonNativeReporter()
     return reporter
 

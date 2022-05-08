@@ -18,7 +18,7 @@ def test_approvaltests_use_reporter(testdir):
 
     # run pytest with approvaltests configuration to use the PythonNative diff tool
     result = testdir.runpytest(
-        "--approvaltests-use-reporter='PythonNative'",
+        "--approvaltests-use-reporter='PythonNativeReporter'",
         '-v'
     )
 
@@ -84,9 +84,9 @@ def test_difftool_path_with_spaces(testdir):
 
 
 def test_python_native_reporter():
-    assert type(get_reporter(None, None, clean("PythonNative"))) == PythonNativeReporter
-    assert type(get_reporter(None, None, clean("'PythonNative'"))) == PythonNativeReporter
-    assert type(get_reporter(None, None, clean('"PythonNative"'))) == PythonNativeReporter
+    assert type(get_reporter(None, None, clean("PythonNativeReporter"))) == PythonNativeReporter
+    assert type(get_reporter(None, None, clean("'PythonNativeReporter'"))) == PythonNativeReporter
+    assert type(get_reporter(None, None, clean('"PythonNativeReporter"'))) == PythonNativeReporter
 
 
 def test_command_line():
@@ -99,6 +99,6 @@ def test_command_line():
 
         return config
 
-    config=create_config(None, None, "'PythonNative'")
+    config=create_config(None, None, "'PythonNativeReporter'")
     pytest_configure(config)
     assert type(approvaltests.get_default_reporter()) == PythonNativeReporter
