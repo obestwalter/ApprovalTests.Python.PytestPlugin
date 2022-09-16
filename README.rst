@@ -48,23 +48,23 @@ it to open another diff tool than when you are on a CI server for example.
 
 This plugin allows you to configure pytest with which diff tool to use when tests fail.
 
-To set the default reporter to 'PythonNativeReporter', suitable for use on the command line:
+To set the default reporter to 'PythonNativeReporter', suitable for use on the command line::
 
     pytest --approvaltests-use-reporter='PythonNativeReporter'
 
-To define your own diff reporter, perhaps a program with a rich GUI installed only on your developer workstation:
+To define your own diff reporter, perhaps a program with a rich GUI installed only on your developer workstation::
 
     pytest --approvaltests-add-reporter="diff_program"
 
-The value for 'approvaltests-add-reporter' should be an executable program that can diff two files received as arguments on the command line like this:
+The value for 'approvaltests-add-reporter' should be an executable program that can diff two files received as arguments on the command line like this::
 
     diff_program filepath1 filepath2
 
-if it takes additional arguments, add them with 'approvaltests-add-reporter-args':
+if it takes additional arguments, add them with 'approvaltests-add-reporter-args'::
 
     pytest --approvaltests-add-reporter="diff_program" --approvaltests-add-reporter-args="arg1,arg2"
 
-They will be inserted like this:
+They will be inserted like this::
 
     diff_program arg1 arg2 filepath1 filepath2
 
@@ -73,12 +73,12 @@ Tip for Jetbrains toolbox and PyCharm users
 
 You can use PyCharm as a diff tool, which is convenient if you are also using it as an IDE.
 Especially if you're using Toolbox, it can be difficult to find the actual executable to pass to pytest.
-You could try this while PyCharm is running:
+You could try this while PyCharm is running::
 
     ps -ef | grep PyCharm
 
 If you're lucky it will show the full path to the PyCharm that is executing. It may not be pretty.
-However, then you can configure pytest with arguments something like this:
+However, then you can configure pytest with arguments something like this::
 
     --approvaltests-add-reporter-args='diff' --approvaltests-add-reporter='/Users/emily/Library/Application Support/JetBrains/Toolbox/apps/PyCharm-P/ch-0/192.6262.63/PyCharm.app/Contents/MacOS/pycharm'
 
@@ -106,11 +106,11 @@ If you encounter any problems, please `file an issue`_ along with a detailed des
 Developer Notes
 ----------------
 
-To release a new version on pypi:
+To release a new version on pypi::
 
     python setup.py install
 
-check it created an egg file under dist
+check it created an egg file under dist::
 
     python -m twine upload dist/pytest_approvaltests-<version>-py3.7.egg
 
