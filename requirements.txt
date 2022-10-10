@@ -1,2 +1,2 @@
-approvaltests==7.0.1
+approvaltests==7.1.0
 pytest==7.1.3
